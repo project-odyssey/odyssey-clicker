@@ -23,7 +23,7 @@ public class ProjectOdyssey extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
-		game.setScreen(new Inventory(game));
+		game.setScreen(new PlayScreen(game));
 		System.out.println("Onetwothree");
 	}
 

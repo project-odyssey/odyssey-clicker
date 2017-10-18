@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
 
@@ -8,8 +9,12 @@ import com.badlogic.gdx.math.Vector2;
  * Created by gmcfeeters3345 on 10/16/2017.
  */
 
-public class PlayScreen extends Game implements GestureDetector.GestureListener {
+public class PlayScreen extends Game implements GestureDetector.GestureListener, Screen {
     int[] inventory = new int[10];
+    public PlayScreen(Game game){
+
+    }
+
 
 
     @Override
@@ -61,6 +66,21 @@ public class PlayScreen extends Game implements GestureDetector.GestureListener 
 
     @Override
     public void pinchStop() {
+
+    }
+
+    @Override
+    public void show() {
+        
+    }
+
+    @Override
+    public void render(float delta) {
+
+    }
+
+    @Override
+    public void hide() {
 
     }
 }
