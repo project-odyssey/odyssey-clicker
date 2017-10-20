@@ -17,13 +17,11 @@ public class ProjectOdyssey extends Game {
 	public ProjectOdyssey(){
 		this.game = this;
 	}
-
-
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
-		game.setScreen(new PlayScreen(game));
+		//game.setScreen(new MainMenuScreen(game));
 		System.out.println("Onetwothree");
 	}
 
