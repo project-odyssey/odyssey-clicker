@@ -10,7 +10,7 @@ import com.badlogic.gdx.Screen;
 public class MainMenuScreen implements Screen{
     public MainMenuScreen(Game projectOdyssey) {
 
-        
+
     }
 
     @Override

@@ -20,8 +20,7 @@ public class ProjectOdyssey extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		//game.setScreen(new MainMenuScreen(game));
+		game.setScreen(new MainMenuScreen(game));
 		System.out.println("Onetwothree");
 	}
 
