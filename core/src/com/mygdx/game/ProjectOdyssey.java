@@ -10,26 +10,29 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ProjectOdyssey extends Game {
 	SpriteBatch batch;
-	Texture img;
-
 	private Game game;
 
 	public ProjectOdyssey(){
 		this.game = this;
 	}
+
+	@Override
+	public void render(){
+		Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
+
+	}
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		//game.setScreen(new MainMenuScreen(game));
-		System.out.println("Onetwothree");
+		game.setScreen(new MainMenuScreen(this));
+
 	}
 
 
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 		screen.dispose();
 	}
 
