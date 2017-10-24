@@ -14,7 +14,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MainMenuScreen extends Game implements Screen {
     SpriteBatch batch;
     Texture img;
+    int width = Gdx.app.getGraphics().getWidth();
+    int height = Gdx.app.getGraphics().getHeight();
     public MainMenuScreen(Game projectOdyssey) {
+
         create();
         render();
     }
@@ -30,10 +33,11 @@ public class MainMenuScreen extends Game implements Screen {
 
     @Override
     public void render () {
+
         Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(img, 300, 300, 150, 100, 300, 200, 1, 1, 90, 1, 1, 300, 200, false, false); //https://stackoverflow.com/questions/24748350/libgdx-rotate-a-texture-when-drawing-it-with-spritebatch
+        batch.draw(img, (width/2), (height/2), (412/2), (210/2), 412, 210, 1, 1, 90, 1, 1, 600, 300, false, false); //https://stackoverflow.com/questions/24748350/libgdx-rotate-a-texture-when-drawing-it-with-spritebatch
         batch.end();
     }
 
