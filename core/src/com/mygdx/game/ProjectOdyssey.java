@@ -25,7 +25,7 @@ public class ProjectOdyssey extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		game.setScreen(new MainMenuScreen(this));
+		game.setScreen(new Inventory(this));
 
 	}
 
