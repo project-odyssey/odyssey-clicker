@@ -6,14 +6,21 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
  * Created by gmcfeeters3345 on 10/16/2017.
  */
 
 public class MainMenuScreen extends Game implements Screen {
+
     SpriteBatch batch;
     Texture img;
+    ImageButton startButton;
+
     public MainMenuScreen(Game projectOdyssey) {
         create();
         render();
@@ -25,7 +32,8 @@ public class MainMenuScreen extends Game implements Screen {
     public void create() {
         batch = new SpriteBatch();
         img = new Texture("begin.jpg");
-
+        Drawable drawable = new TextureRegionDrawable(new TextureRegion(img));
+        startButton = new ImageButton(drawable); //theoretically places the "img" image in the button
     }
 
     @Override

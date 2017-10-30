@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ProjectOdyssey extends Game {
+	int money; //total amount of money that the player has
+	String yourMoney;
 	SpriteBatch batch;
 	private Game game;
 
@@ -26,7 +28,8 @@ public class ProjectOdyssey extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		game.setScreen(new MainMenuScreen(this));
-
+		money = 0;
+		yourMoney = "Money: " + money;
 	}
 
 
