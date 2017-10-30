@@ -18,7 +18,7 @@ public class Market extends Game implements Screen {
         final int dryIce = 5;
         final int snowFlake = 6;
         final int icicle = 7;
-        final int snowMan = 9;
+        final int snowMan = 8;
 
 
 
