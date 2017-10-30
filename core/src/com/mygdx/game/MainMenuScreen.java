@@ -12,20 +12,30 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 
 public class MainMenuScreen extends Game implements Screen {
+    private Game game;
+    public MainMenuScreen(final ProjectOdyssey game) {
+        game.setScreen(new Market(this));
+    }
+
     SpriteBatch batch;
     Texture img;
     int width = Gdx.app.getGraphics().getWidth();
     int height = Gdx.app.getGraphics().getHeight();
     public MainMenuScreen(Game projectOdyssey) {
 
+
         create();
         render();
+
     }
 
 
 
     @Override
     public void create() {
+
+
+
         batch = new SpriteBatch();
         img = new Texture("begin.jpg");
 
