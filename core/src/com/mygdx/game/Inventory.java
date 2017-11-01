@@ -2,8 +2,11 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
@@ -19,10 +22,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Inventory extends Game implements Screen, GestureDetector.GestureListener{
     int ice;
+    private String iceString;
+    int[] inventory = new int[10];
+    private BitmapFont font;
     private Stage stage;
     private SpriteBatch batch;
     private ImageButton iceButton;
     public Inventory(final ProjectOdyssey game) {
+        ice = 0;
+        iceString = "Ice: " + ice;
+        font = new BitmapFont();
         stage = new Stage();
         batch = new SpriteBatch();
 
@@ -49,20 +58,20 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //game.setScreen(new PlayScreen(game)); // Switch screen to game state
-                //iceButton.setDisabled(true);
-
+                ice++;
+                inventory[0] = ice;
             }
         });
         stage.addActor(iceButton);
-        System.out.println("onetwofour");
-        Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
 
-        int[] inventory = new int[10];
+
+        Gdx.input.setInputProcessor(new InputMultiplexer(stage, new GestureDetector(this)));
+
 
         for(int i=0; i < inventory.length; i++){
 
         }
+        System.out.println(ice);
     }
 
 
@@ -73,6 +82,28 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
 
     @Override
     public void render(float delta) {
+
+        //game.assets.update();
+        // Set background color
+        Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.begin();
+        // Draw play button
+        iceButton.getImage();
+        iceButton.draw(batch, 1);
+        font.draw(batch, "Ice: "+ ice, 200, 200);
+        // Draw logo
+       /* float width = logo.getWidth() * Gdx.graphics.getDensity() / 3.0f;
+        float height = logo.getHeight() * Gdx.graphics.getDensity() / 3.0f;
+        batch.draw(logo,
+                (Gdx.graphics.getWidth() - width)/2,
+                2 * (Gdx.graphics.getHeight() - height)/3,
+                width, height);*/
+        batch.end();
+
+        stage.act();
+        stage.draw();
 
     }
 
@@ -115,12 +146,11 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
     @Override
     public boolean tap(float x, float y, int count, int button) {
 
-        if (count > 0 ){
+       /* if (count > 0 ){
             ice = count;
-
             System.out.println(count);
             System.out.println(ice);
-        }
+        }*/
         return false;
     }
 
