@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ProjectOdyssey extends Game {
-	int money; //total amount of money that the player has
+	float money; //total amount of money that the player has
 	String yourMoney;
 	SpriteBatch batch;
 	private Game game;
