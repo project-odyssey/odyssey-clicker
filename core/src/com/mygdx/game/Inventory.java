@@ -4,9 +4,13 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
@@ -24,16 +28,27 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
     int ice;
     private String iceString;
     int[] inventory = new int[10];
-    private BitmapFont font;
+    private BitmapFont font = new BitmapFont(Gdx.files.internal("buttons/ocra.ttf"));
+    private GlyphLayout layout;
     private Stage stage;
     private SpriteBatch batch;
     private ImageButton iceButton;
     public Inventory(final ProjectOdyssey game) {
+        this.font = font;
         ice = 0;
         iceString = "Ice: " + ice;
         font = new BitmapFont();
         stage = new Stage();
         batch = new SpriteBatch();
+        layout = new GlyphLayout();
+
+        AssetManager manager = game.assets;
+        manager.finishLoading();
+        //font = manager.get("fonts/ocra.ttf");
+
+
+
+        font.getData().setScale(10);
 
         //Button skin
         Skin iceButtonSkin = new Skin();
@@ -74,7 +89,18 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
         System.out.println(ice);
     }
 
-
+    public void draw() {
+        batch.begin();
+        String iceString = "Ice: " + ice;
+        layout.setText(font, iceString);
+        font.setColor(1, 0, 0, 1);
+        font.draw(batch,
+                iceString,
+                Gdx.graphics.getWidth() / 3,
+                Gdx.graphics.getHeight() / 3
+        );
+        batch.end();
+    }
     @Override
     public void show() {
 
@@ -92,7 +118,7 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
         // Draw play button
         iceButton.getImage();
         iceButton.draw(batch, 1);
-        font.draw(batch, "Ice: "+ ice, 200, 200);
+        //font.draw(batch, "Ice: "+ ice, Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/2);
         // Draw logo
        /* float width = logo.getWidth() * Gdx.graphics.getDensity() / 3.0f;
         float height = logo.getHeight() * Gdx.graphics.getDensity() / 3.0f;
@@ -134,7 +160,9 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        font.dispose();
+        screen.dispose();
     }
 
     @Override
