@@ -13,8 +13,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainMenuScreen extends Game implements Screen {
     private Game game;
-    public MainMenuScreen(final ProjectOdyssey game) {
-        game.setScreen(new Market(this));
+    public MainMenuScreen(final ProjectOdyssey game) throws InterruptedException {
+        game.setScreen(new MarketBackEnd(this));
     }
 
     SpriteBatch batch;
