@@ -21,7 +21,7 @@ public class ProjectOdyssey extends Game {
 	@Override
 	public void render(){
 		Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
-		super.render();
+
 	}
 
 	@Override

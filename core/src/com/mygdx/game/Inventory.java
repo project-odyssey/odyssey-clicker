@@ -46,7 +46,7 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
         manager.finishLoading();
         //font = manager.get("fonts/ocra.ttf");
 
-
+        iceString = "Welcome to your Odyssey";
 
         font.getData().setScale(10);
 
@@ -91,7 +91,6 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
 
     public void draw() {
         batch.begin();
-        String iceString = "Ice: " + ice;
         layout.setText(font, iceString);
         font.setColor(1, 0, 0, 1);
         font.draw(batch,
@@ -119,18 +118,12 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
         iceButton.getImage();
         iceButton.draw(batch, 1);
         //font.draw(batch, "Ice: "+ ice, Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/2);
-        // Draw logo
-       /* float width = logo.getWidth() * Gdx.graphics.getDensity() / 3.0f;
-        float height = logo.getHeight() * Gdx.graphics.getDensity() / 3.0f;
-        batch.draw(logo,
-                (Gdx.graphics.getWidth() - width)/2,
-                2 * (Gdx.graphics.getHeight() - height)/3,
-                width, height);*/
+
         batch.end();
 
         stage.act();
         stage.draw();
-
+        super.render();
     }
 
     @Override
