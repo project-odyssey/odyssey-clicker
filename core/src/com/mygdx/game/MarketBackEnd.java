@@ -1,7 +1,11 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Created by nleof4499 on 10/24/2017.
@@ -9,9 +13,14 @@ import com.badlogic.gdx.Screen;
 
 public class MarketBackEnd extends Game implements Screen {
 
+
+
+    private BitmapFont font;
+    private SpriteBatch batch;
+
     String marketEvent = "";
 
-    int iceCubePrice = 0; //current price of item
+    static int iceCubePrice = 0; //current price of item
     int iceCubeMin = 3; //minimum possible price in the algorithm
     int iceCubeMax = 5; //maximum possible price in the algorithm
 
@@ -48,27 +57,58 @@ public class MarketBackEnd extends Game implements Screen {
         //The asset market will
 
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) { //always be changing prices in the market.
+                    System.out.println(" --------------- Price "); //Break line to read the market easier
+                    iceCubeChange();
+                    snowBallChange();
+                    bucketChange();
+                    shovelChange();
+                    dryIceChange();
+                    snowFlakeChange();
+                    icicleChange();
+                    snowManChange();
 
-        System.out.println("TEST");
+                    checkForEvent();
+                    //final prices for the day
 
-        while (true) { //always be changing prices in the market.
-            iceCubeChange();
-            snowBallChange();
-            bucketChange();
-            shovelChange();
-            dryIceChange();
-            snowFlakeChange();
-            icicleChange();
-            snowManChange();
 
-            checkForEvent();
-            //final prices for the day
-            Thread.sleep(5000); //wait 5 seconds before changing the market again
+                    try {
+                        Thread.sleep(5000); //wait 5 seconds before changing the market again
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
 
-            System.out.println(""); //Break line to read the market easier
-        }
+        }).start();
+
+
+
+
+
+        create();
+
+        render(10);
+
+
+
+
 
     }
+
+    public void render(float delta) {
+        System.out.println("Price render method");
+
+        batch.begin();
+        font.draw(batch, String.valueOf(iceCubePrice), 20, 20); //you can change the position as you like
+        batch.end();
+        super.render();
+    }
+
+
     public void checkForEvent() {
         int random = (int) (Math.random() * 300 + 1); //makes a random number between 1 and 300
 
@@ -382,6 +422,11 @@ public class MarketBackEnd extends Game implements Screen {
 
     @Override
     public void create() {
+        System.out.println("Price Create method"); //learn to dispose things
+
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
 
     }
 
@@ -391,13 +436,16 @@ public class MarketBackEnd extends Game implements Screen {
     }
 
     @Override
-    public void render(float delta) {
-
-    }
-
-    @Override
     public void hide() {
 
     }
+
+    public void dispose(){
+        font.dispose();
+        batch.dispose();
+
+
+    }
+
 }
 

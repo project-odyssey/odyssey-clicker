@@ -49,6 +49,7 @@ public class MainMenuScreen extends Game implements Screen {
         batch.begin();
         batch.draw(img, (width/2), (height/2), (412/2), (210/2), 412, 210, 1, 1, 90, 1, 1, 600, 300, false, false); //https://stackoverflow.com/questions/24748350/libgdx-rotate-a-texture-when-drawing-it-with-spritebatch
         batch.end();
+        super.render();
     }
 
     @Override
