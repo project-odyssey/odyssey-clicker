@@ -28,19 +28,20 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
     int ice;
     private String iceString;
     int[] inventory = new int[10];
-    private BitmapFont font = new BitmapFont(Gdx.files.internal("buttons/ocra.ttf"));
-    private GlyphLayout layout;
+    private BitmapFont font;
+    //private BitmapFont font = new BitmapFont(Gdx.files.internal("buttons/ocra.ttf"));
+    //private GlyphLayout layout;
     private Stage stage;
     private SpriteBatch batch;
     private ImageButton iceButton;
-    public Inventory(final ProjectOdyssey game) {
+    public Inventory(final ProjectOdyssey game, BitmapFont font) {
         this.font = font;
         ice = 0;
         iceString = "Ice: " + ice;
-        font = new BitmapFont();
+        //font = new BitmapFont();
         stage = new Stage();
         batch = new SpriteBatch();
-        layout = new GlyphLayout();
+        //layout = new GlyphLayout();
 
         AssetManager manager = game.assets;
         manager.finishLoading();
@@ -48,7 +49,7 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
 
         iceString = "Welcome to your Odyssey";
 
-        font.getData().setScale(10);
+        //font.getData().setScale(10);
 
         //Button skin
         Skin iceButtonSkin = new Skin();
@@ -89,20 +90,26 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
         System.out.println(ice);
     }
 
+    public Inventory(ProjectOdyssey projectOdyssey) {
+    }
+
     public void draw() {
         batch.begin();
-        layout.setText(font, iceString);
+        l/*ayout.setText(font, iceString);
         font.setColor(1, 0, 0, 1);
         font.draw(batch,
                 iceString,
                 Gdx.graphics.getWidth() / 3,
                 Gdx.graphics.getHeight() / 3
-        );
+        );*/
         batch.end();
     }
     @Override
     public void show() {
 
+    }
+    public void render(){
+        super.render();
     }
 
     @Override
@@ -123,7 +130,6 @@ public class Inventory extends Game implements Screen, GestureDetector.GestureLi
 
         stage.act();
         stage.draw();
-        super.render();
     }
 
     @Override
