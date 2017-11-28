@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -11,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * Created by nleof4499 on 10/24/2017.
  */
 
-public class MarketBackEnd extends Game implements Screen {
+public class MarketBackEnd extends Game{
 
 
 
@@ -57,6 +58,13 @@ public class MarketBackEnd extends Game implements Screen {
         //The asset market will
 
 
+
+        Game game;
+
+
+        create();
+        render();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -85,28 +93,20 @@ public class MarketBackEnd extends Game implements Screen {
 
         }).start();
 
+}
 
 
 
-
-        create();
-
-        render(10);
-
-
+    @Override
+    public void render () {
+        System.out.println("FUCKrgersgersgersgKKKK Price");
 
 
 
     }
 
-    public void render(float delta) {
-        System.out.println("Price render method");
 
-        batch.begin();
-        font.draw(batch, String.valueOf(iceCubePrice), 20, 20); //you can change the position as you like
-        batch.end();
-        super.render();
-    }
+
 
 
     public void checkForEvent() {
@@ -430,16 +430,8 @@ public class MarketBackEnd extends Game implements Screen {
 
     }
 
-    @Override
-    public void show() {
-
-    }
 
     @Override
-    public void hide() {
-
-    }
-
     public void dispose(){
         font.dispose();
         batch.dispose();

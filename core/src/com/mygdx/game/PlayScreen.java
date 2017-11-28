@@ -1,7 +1,9 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
 
@@ -11,6 +13,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class PlayScreen extends Game implements GestureDetector.GestureListener, Screen {
     int[] inventory = new int[10];
+
     public PlayScreen(Game game){
 
     }

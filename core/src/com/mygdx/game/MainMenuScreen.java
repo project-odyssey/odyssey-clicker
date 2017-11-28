@@ -14,18 +14,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MainMenuScreen extends Game implements Screen {
     private Game game;
     public MainMenuScreen(final ProjectOdyssey game) throws InterruptedException {
-        game.setScreen(new MarketBackEnd(this));
+        game.setScreen((Screen) new MarketBackEnd(this));
     }
 
     SpriteBatch batch;
     Texture img;
     int width = Gdx.app.getGraphics().getWidth();
     int height = Gdx.app.getGraphics().getHeight();
-    public MainMenuScreen(Game projectOdyssey) {
+    public MainMenuScreen() {
 
 
         create();
-        render();
+       // render();
 
     }
 
@@ -44,6 +44,7 @@ public class MainMenuScreen extends Game implements Screen {
     @Override
     public void render () {
 
+
         Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
@@ -59,7 +60,7 @@ public class MainMenuScreen extends Game implements Screen {
 
     @Override
     public void render(float delta) {
-
+        System.out.println(" --------------- Price ");
     }
 
     @Override

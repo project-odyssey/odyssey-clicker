@@ -19,7 +19,9 @@ public class ProjectOdyssey extends Game {
 	@Override
 	public void render(){
 		Gdx.gl.glClearColor(1, 1, 1, 1); //White background color
+		System.out.println("WHYYYYY Price ");
 		super.render();
+
 	}
 
 	@Override
